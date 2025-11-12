@@ -2,7 +2,7 @@ import data from "../../../Data/Data.json"; // adjust path
 
 export const sendMessageToBot = async (userMessage) => {
     try {
-        const response = await fetch("http://localhost:5173/api/chatbot", {
+        const response = await fetch("/api/chatbot", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ message: userMessage, data })

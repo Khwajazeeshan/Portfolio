@@ -1,28 +1,29 @@
 import express from 'express';
 import DBconnect from './config/db.js';
-import cors from 'cors'; // Import the cors package
-import dotenv from 'dotenv'; // Import dotenv to load environment variables
-import chatbotRoutes from "./routes/Chatbot.js"; // Import chatbot routes
-
+import cors from 'cors';
+import dotenv from 'dotenv';
+import chatbotRoutes from "./routes/Chatbot.js";
 
 dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-// Middleware
-app.use(cors({ // Enable CORS for your frontend origin
- origin: 'https://portfolio-frontend-mvet.onrender.com',
-  methods: ['POST', 'GET', 'PUT', 'DELETE'], // Allow specific HTTP methods
-  credentials: true, // Allow credentials (if you need them)
+// ✅ Allow all necessary methods including OPTIONS
+app.use(cors({
+  origin: 'https://portfolio-frontend-mvet.onrender.com',
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  credentials: true,
 }));
 
-app.use(express.json()); // For parsing application/json
+// ✅ Handle preflight requests globally
+app.options('*', cors());
 
-app.use('/api/chatbot', chatbotRoutes); // Register chatbot routes
+app.use(express.json());
+app.use('/api/chatbot', chatbotRoutes);
 
-// Start the server
 app.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${PORT}`);
-  DBconnect()
+  console.log(`✅ Server running on port ${PORT}`);
+  DBconnect();
 });

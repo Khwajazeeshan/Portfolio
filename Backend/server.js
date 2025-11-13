@@ -20,7 +20,7 @@ app.use(cors({ // Enable CORS for your frontend origin
 
 app.use(express.json()); // For parsing application/json
 
-app.use('/api/Chatbot', chatbotRoutes); // Register chatbot routes
+app.use('/api/chatbot', chatbotRoutes); // Register chatbot routes
 
 // Start the server
 app.listen(PORT, () => {

@@ -1,0 +1,197 @@
+.projects-section {
+    background-color: #0d0d0d;
+    color: #fff;
+    font-family: "Poppins", sans-serif;
+    padding: 40px;
+    width: 80%;
+    min-height: 40vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 50px;
+    border: 1px solid rgba(255, 140, 0, 0.4);
+    box-shadow: 0 0 20px rgba(255, 140, 0, 0.3);
+    position: relative;
+    /* Needed for ::after positioning */
+    overflow: hidden;
+    /* Prevent glow overflow */
+    transition: all 0.3s ease;
+}
+
+/* 🔹 Rotating transparent glow background */
+.projects-section::after {
+    content: "";
+    position: absolute;
+    top: -10%;
+    left: -10%;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center, rgba(128, 127, 127, 0.151) 0%, transparent 70%);
+    animation: projectsGlowMove 10s infinite linear;
+    z-index: 0;
+    /* Keeps the glow behind content */
+}
+
+/* 🔹 Keep content above the glow */
+.projects-section>* {
+    position: relative;
+    z-index: 2;
+}
+
+.projects-section:hover {
+    box-shadow: 0 0 30px rgba(255, 140, 0, 0.6);
+    transform: translateY(-5px);
+}
+
+/* 🔹 Keyframes for the rotating background */
+@keyframes projectsGlowMove {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.main-title {
+    font-size: 1rem;
+    color: #0db2e9;
+    margin-bottom: 6px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+
+.projects-title {
+    font-size: 2.5rem;
+    color: #ff8c00;
+    margin-bottom: 40px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 0 0 10px #ff8c00;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.projects-title:hover {
+    color: #ffa733;
+    transform: scale(1.05);
+}
+
+.projects-card {
+    background-color: #141414;
+    border: 1px solid rgba(255, 140, 0, 0.4);
+    box-shadow: 0 0 20px rgba(255, 140, 0, 0.3);
+    border-radius: 20px;
+    padding: 30px;
+    width: 90%;
+    max-width: 900px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    transition: all 0.4s ease;
+}
+
+.projects-card:hover {
+    box-shadow: 0 0 30px rgba(255, 140, 0, 0.6);
+    transform: translateY(-5px);
+}
+
+.project-box {
+    background-color: #1a1a1a;
+    border: 1px solid rgba(255, 140, 0, 0.3);
+    border-radius: 12px;
+    padding: 15px 20px;
+    transition: all 0.3s ease;
+    box-shadow: inset 0 0 10px rgba(255, 140, 0, 0.2);
+}
+
+.project-box:hover {
+    transform: scale(1.03);
+    box-shadow: 0 0 20px rgba(255, 140, 0, 0.4);
+}
+
+.project-link {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    color: #fff;
+    font-size: 1.1rem;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.project-link:hover {
+    color: #ff8c00;
+}
+
+.github-icon {
+    font-size: 1.6rem;
+    color: #ff8c00;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.project-link:hover .github-icon {
+    color: #ffa733;
+    transform: rotate(-10deg) scale(1.2);
+}
+
+.project-name {
+    flex: 1;
+    word-break: break-word;
+}
+
+.show-more-btn {
+    margin-top: 20px;
+    padding: 10px 25px;
+    font-size: 1rem;
+    font-weight: 500;
+    border: none;
+    border-radius: 25px;
+    background-color: #ff8c00;
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: block;
+}
+
+.show-more-btn:hover {
+    background-color: #ffa733;
+    transform: scale(1.05);
+}
+
+
+/* Responsive */
+@media (max-width: 768px) {
+
+    .projects-section {
+        padding: 40px 28px;
+        border-radius: 40px;
+    }
+
+    .projects-section::after {
+        content: "";
+        position: absolute;
+        top: -50%;
+        left: 10%;
+        width: 80%;
+        height: 200%;
+        background: radial-gradient(circle at center, rgba(169, 169, 169, 0.356) 0%, transparent 70%);
+        animation: aboutGlowMove 10s infinite linear;
+        z-index: 0;
+        /* Keeps the glow behind content */
+    }
+
+    .projects-title {
+        font-size: 2rem;
+    }
+
+    .project-link {
+        font-size: 1rem;
+    }
+
+    .github-icon {
+        font-size: 1.3rem;
+    }
+}

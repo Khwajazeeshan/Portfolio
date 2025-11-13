@@ -12,8 +12,7 @@ const PORT = process.env.PORT || 5000;
 
 // Middleware
 app.use(cors({ // Enable CORS for your frontend origin
- origin: 'https://portfolio-frontend-mvet.onrender.com'
-
+ origin: 'https://portfolio-frontend-mvet.onrender.com',
   methods: ['POST', 'GET', 'PUT', 'DELETE'], // Allow specific HTTP methods
   credentials: true, // Allow credentials (if you need them)
 }));

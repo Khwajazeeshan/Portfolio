@@ -14,7 +14,7 @@ const PORT = process.env.PORT || 5000;
 app.use(cors({ // Enable CORS for your frontend origin
  origin: 'https://portfolio-frontend-mvet.onrender.com'
 
-  methods: 'POST', // Allow specific HTTP methods
+  methods: ['POST', 'GET', 'PUT', 'DELETE'], // Allow specific HTTP methods
   credentials: true, // Allow credentials (if you need them)
 }));
 
